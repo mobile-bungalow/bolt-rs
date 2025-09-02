@@ -1,0 +1,3 @@
+[submodule "bolt-sys/bolt"]
+	path = bolt-sys/bolt
+	url = git@github.com:Beariish/bolt.git
