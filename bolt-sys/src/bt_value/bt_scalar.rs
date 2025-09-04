@@ -4,10 +4,8 @@ use crate::sys::*;
 use super::FromBoltValue;
 use super::MakeBoltValue;
 use super::ScalarTypeSignature;
-use super::TypeSignature;
 use super::bt_object::Type;
 
-// Implement TypeSignature for f64 so we can get its type
 impl ScalarTypeSignature for f64 {
     fn make_type(ctx: &mut crate::BoltContext) -> Type {
         unsafe {

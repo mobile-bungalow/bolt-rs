@@ -10,11 +10,12 @@ use crate::{
 pub mod bt_object;
 pub mod bt_scalar;
 
-/// Some types need a context to create reflection info
+/// non-scalar compound types that need more information to create reflection info
 pub trait TypeSignature: Sized {
     fn make_type(&self, ctx: &mut BoltContext) -> Type;
 }
 
+/// Scalar and simple types only need to know which type they are to produce reflection info
 pub trait ScalarTypeSignature: Sized {
     fn make_type(ctx: &mut BoltContext) -> Type;
 }
@@ -124,7 +125,6 @@ impl ValueType {
                 return ValueType::Enum(todo!());
             }
 
-            // Check if it's an object
             if let Some(obj_ptr) = NonNull::new(sys::bt_object(val))
                 && crate::sys::bt_is_object(val) != 0
             {
