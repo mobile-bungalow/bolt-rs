@@ -5,9 +5,11 @@
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
-use crate::bt_object::ObjectType;
+use crate::{
+    bt_object::ObjectType,
+};
 
-/// bt_Object mask field helpers (BOLT_USE_MASKED_GC_HEADER)
+/// bt_Object mask field helpers
 pub mod object_mask {
     pub const MARK_BIT: u64 = 0x1;
     pub const PTR_BITS: u64 = 0x00FF_FFFF_FFFF_FFFC;
